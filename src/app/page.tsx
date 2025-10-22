@@ -35,6 +35,112 @@ const GALLERY = [
 ];
 
 const fmt = (n:number)=>n.toLocaleString("es-ES",{minimumFractionDigits:2, maximumFractionDigits:2});
+function ContactFormFS() {
+  const [state, setState] = useState<"idle"|"loading"|"ok"|"err">("idle");
+  const [msg, setMsg] = useState("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setState("loading"); setMsg("");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    // Honeypot (si está relleno => bot)
+    if ((data.get("_gotcha") as string)?.trim()) {
+      setState("ok"); form.reset(); return;
+    }
+
+    const endpoint = "https://formspree.io/f/movkoeqp"; 
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error("No se pudo enviar");
+      setState("ok"); setMsg("¡Gracias! Te contactaremos en breve."); form.reset();
+    } catch {
+      setState("err"); setMsg("Ha ocurrido un error. Inténtalo más tarde.");
+    }
+  }
+
+  return (
+    <div className="container pad max-w-4xl">
+      <div className="text-center mb-8">
+        <div className="eyebrow">Contacto</div>
+        <h2 className="h2">Solicita información</h2>
+        <p className="lead">
+          También puedes escribir a{" "}
+          <a href="mailto:quattroislands@gmail.com" className="underline">
+            quattroislands@gmail.com
+          </a>{" "}
+          o llamar al{" "}
+          <a href="tel:+34620407957" className="underline">
+            +34 620 40 79 57
+          </a>.
+        </p>
+      </div>
+
+      {state === "ok" ? (
+        <div className="bg-white rounded-2xl border border-[color:var(--line)] shadow p-8 text-center">
+          <div className="h3">¡Mensaje enviado! 👌</div>
+          <p className="lead mt-2">{msg}</p>
+        </div>
+      ) : (
+        <form onSubmit={onSubmit} className="grid md:grid-cols-2 gap-6 bg-white rounded-2xl border border-[color:var(--line)] shadow p-6 md:p-8">
+          {/* Honeypot anti-spam */}
+          <input type="text" name="_gotcha" className="hidden" tabIndex={-1} autoComplete="off" />
+
+          <div>
+            <label className="label">Nombre *</label>
+            <input name="name" required className="input" />
+          </div>
+          <div>
+            <label className="label">Teléfono</label>
+            <input name="phone" className="input" inputMode="tel" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="label">Email *</label>
+            <input type="email" name="email" required className="input" />
+          </div>
+          <div>
+            <label className="label">Interés</label>
+            <select name="interest" className="input">
+              <option value="">Información general</option>
+              <option>Visita personalizada</option>
+              <option>Financiación</option>
+              <option>Planos y memoria</option>
+            </select>
+          </div>
+          <div className="md:col-span-2">
+            <label className="label">Mensaje *</label>
+            <textarea name="message" rows={5} required className="input" />
+          </div>
+
+          <label className="md:col-span-2" style={{ display:"flex", gap:8, alignItems:"flex-start", fontSize:14, color:"#373737" }}>
+            <input type="checkbox" required style={{ marginTop:4 }} /> He leído y acepto la{" "}
+            <a href="/privacidad" className="underline">Política de Privacidad</a>.
+          </label>
+
+          {/* Extras para que el email te llegue con buen asunto y reply */}
+          <input type="hidden" name="_subject" value="Nueva solicitud · Quattro Islands" />
+          <input type="hidden" name="_replyto" value="" />
+
+          <div className="md:col-span-2">
+            <button className="btn btn-primary w-full" disabled={state==="loading"}>
+              {state === "loading" ? "Enviando..." : "Enviar"}
+            </button>
+            {state === "err" && <p className="muted mt-2 text-center">⚠️ {msg}</p>}
+          </div>
+        </form>
+      )}
+    </div>
+  );
+}
+
+
+
 
 export default function Page(){
   const [menu, setMenu] = useState(false);
@@ -240,7 +346,7 @@ export default function Page(){
                     <tr><th>Parking</th><td>Dos plazas dentro de la parcela, junto a la piscina.</td></tr>
                   </tbody>
                 </table>
-
+                <p className="muted" style={{fontSize:12}}>* Las viviendas están adaptadas para tus necesidades de hoy y mañana, tendrás las posibilidades de elegir diferentes personalizaciones de vivienda.</p>
                 <p className="muted" style={{fontSize:12}}>* Superficies aproximadas. Imágenes orientativas. CEE en trámite.</p>
               </div>
             </div>
@@ -301,59 +407,61 @@ export default function Page(){
 
       {/* ===== CONTACTO ===== */}
       <section id="contacto" className="section bg-ivory">
-        <div className="container pad max-w-4xl">
-          <div className="text-center mb-8">
-            <div className="eyebrow">Contacto</div>
-            <h2 className="h2">Solicita información</h2>
-          </div>
+        <ContactFormFS />
+        </section>
 
-          {sent ? (
-            <div className="bg-white rounded-2xl border border-[color:var(--line)] shadow p-10 text-center">
-              <div className="h3">¡Gracias!</div>
-              <p className="lead mt-2">Hemos recibido tu mensaje y te contactaremos muy pronto.</p>
-            </div>
-          ) : (
-            <form onSubmit={(e)=>{ e.preventDefault(); setSent(true); }} className="grid md:grid-cols-2 gap-6">
-              <div><label className="label">Nombre *</label><input className="input" required/></div>
-              <div><label className="label">Teléfono</label><input className="input" inputMode="tel"/></div>
-              <div className="md:col-span-2"><label className="label">Email *</label><input type="email" className="input" required/></div>
-              <div className="md:col-span-2"><label className="label">Mensaje</label><textarea rows={5} className="input"/></div>
-              <label className="md:col-span-2" style={{display:"flex",gap:8,alignItems:"flex-start",fontSize:14,color:"#373737"}}>
-                <input type="checkbox" required style={{marginTop:4}}/> He leído y acepto la <a href="/privacidad" className="underline">Política de Privacidad</a>.
-              </label>
-              <div className="md:col-span-2"><button className="btn btn-primary w-full">Enviar</button></div>
-            </form>
-          )}
-        </div>
-      </section>
-
-      {/* ===== FOOTER ===== */}
+                               {/* ===== FOOTER ===== */}
       <footer className="footer">
-        <div className="container pad py-12 grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="h3"><span style={{color:"var(--accent)",fontWeight:900}}>QI</span> · Quattro Islands</div>
-            <p className="muted mt-3">Cuatro villas con piscina privada en La Font (Alicante).</p>
-          </div>
-          <div>
-            <div className="eyebrow">Menú</div>
-            <ul className="grid gap-2 mt-2">
-              {NAV.map(n=>(<li key={n.href}><a href={n.href}>{n.label}</a></li>))}
-              <li><a href="/aviso-legal">Aviso legal</a></li>
-              <li><a href="/privacidad">Privacidad</a></li>
-              <li><a href="/cookies">Cookies</a></li>
+        <div className="container pad footer__top">
+          <div className="footer__grid">
+            {/* IZQUIERDA: MENÚ */}
+          <div className="footer__col footer__col--left">
+            <div className="title">Menú</div>
+            <ul className="footer__list">
+              {NAV.map(n => (
+                <li key={n.href}><a href={n.href}>{n.label}</a></li>
+              ))}
+             
             </ul>
           </div>
-          <div>
-            <div className="eyebrow">Contacto</div>
-            <ul className="grid gap-1.5 mt-2">
-              <li>La Font · El Campello (Alicante)</li>
-              <li><a href="mailto:info@quattroislands.es">info@quattroislands.es</a></li>
-              <li><a href="tel:+34000000000">+34 000 000 000</a></li>
-            </ul>
+
+            {/* CENTRO: TARJETA CON LOGOS */}
+            <div className="footer__center">
+              <div className="badge-olive">
+                <div className="badge-logos">
+                  <img src="/logos/vela.png" alt="Vela Inmobiliaria" />
+                  <span className="sep" aria-hidden="true" />
+                  <img src="/logos/zimco.png" alt="ZIMCO Proyectos y Diseños" />
+                </div>
+                <div className="badge-caption">Promueven &amp; construyen</div>
+                <p className="badge-desc">
+                  Viviendas de obra nueva con un cuidado diseño y calidades,
+                  construidas con atención al detalle y soluciones “llave en mano”.
+                </p>
+              </div>
+            </div>
+
+            {/* DERECHA: CONTACTO */}
+            <div className="footer__col footer__contact">
+              <div className="title">Contacto</div>
+              <ul className="footer__list">
+                <li>La Font · El Campello (Alicante)</li>
+                <li><a href="mailto:quattroislands@gmail.com">quattroislands@gmail.com</a></li>
+                <li><a href="tel:+34620407957">+34 620 40 79 57</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div className="footer__copy">© {new Date().getFullYear()} Quattro Islands</div>
+
+        <div className="footer__copy">
+          <div className="container pad footer__copy__row">
+            <span>© {new Date().getFullYear()} Quattro Islands</span>
+            <span className="muted">Imágenes orientativas · Superficies aproximadas · CEE en trámite</span>
+          </div>
+        </div>
       </footer>
+
+
     </main>
   );
 }
