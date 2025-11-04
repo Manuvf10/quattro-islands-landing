@@ -17,13 +17,18 @@ type VillaId = "A" | "B" | "C" | "D";
 type Villa = { id: VillaId; parcela?: number|null; util: number; construida: number; img: string };
 
 const VILLAS: Villa[] = [
-  { id: "A", parcela: 269.61, util: 123.90, construida: 143.41, img: "/quattro/quattro-02.jpeg" },
+  { id: "A", parcela: 269.61, util: 123.90, construida: 143.41, img: "/quattro/quattro-12.jpeg" },
   { id: "B", parcela: 260.33, util: 123.90, construida: 143.41, img: "/quattro/quattro-07.jpeg" },
-  { id: "C", parcela: 257.47, util: 121.56, construida: 141.14, img: "/quattro/quattro-06.jpeg" },
+  { id: "C", parcela: 257.47, util: 121.56, construida: 141.14, img: "/quattro/quattro-11.jpeg" },
   { id: "D", parcela: 263.88, util: 121.56, construida: 141.14, img: "/quattro/quattro-09.jpeg" },
 ];
 
 const GALLERY = [
+  "/quattro/quattro-15.jpeg",
+  "/quattro/quattro-14.jpeg",
+  "/quattro/quattro-13.jpeg",
+  "/quattro/quattro-12.jpeg",
+  "/quattro/quattro-11.jpeg",
   "/quattro/quattro-08.jpeg",
   "/quattro/quattro-07.jpeg",
   "/quattro/quattro-10.jpeg",
@@ -33,6 +38,7 @@ const GALLERY = [
   "/quattro/quattro-04.jpeg",
   "/quattro/quattro-03.jpeg",
 ];
+
 
 const fmt = (n:number)=>n.toLocaleString("es-ES",{minimumFractionDigits:2, maximumFractionDigits:2});
 function ContactFormFS() {
