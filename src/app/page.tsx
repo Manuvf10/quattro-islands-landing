@@ -30,9 +30,7 @@ const GALLERY = [
   "/quattro/quattro-13.jpeg",
   "/quattro/quattro-12.jpeg",
   "/quattro/quattro-11.jpeg",
-  "/quattro/quattro-08.jpeg",
   "/quattro/quattro-07.jpeg",
-  "/quattro/quattro-10.jpeg",
   "/quattro/quattro-09.jpeg",
   "/quattro/quattro-02.jpeg",
   "/quattro/quattro-06.jpeg",
@@ -220,7 +218,7 @@ export default function Page(){
       {/* ===== HERO (solo título + subtítulo script) ===== */}
       <section id="inicio" className="hero">
         <Image
-          src="/quattro/quattro-08.jpeg"
+          src="/quattro/quattro-13.jpeg"
           alt="Piscina y jardín — Quattro Islands"
           fill priority sizes="100vw"
           style={{objectFit:"cover", objectPosition:"center 78%"}}
@@ -228,7 +226,7 @@ export default function Page(){
         <div className="hero__fade"/>
         <div className="hero__center">
           <div className="h1">Quattro Islands</div>
-          <p className="hero__subtitle script">Tu villa en el Mediterráneo</p>
+          <p className="h2">tu villa en el Mediterráneo</p>
         </div>
       </section>
 
@@ -244,7 +242,7 @@ export default function Page(){
         Descubre Quattro Islands, un exclusivo conjunto de cuatro villas concebidas como islas privadas, donde la privacidad y la calma mediterránea se combinan con un diseño contemporáneo y elegante. Cada villa ha sido cuidadosamente diseñada para ofrecer espacios amplios, luminosos y conectados con el entorno, creando un equilibrio perfecto entre naturaleza, arquitectura y confort.
       </div>
       <p style={{marginTop:14}}>
-        Ubicadas en <strong>calle La Sequía 24, Sant Joan d’Alacant</strong>, en la zona de La Font (El Campello), a tan solo <strong>10 minutos</strong> de la playa de Muchavista y <strong>15 minutos</strong> del centro de Alicante, estas villas ofrecen un entorno privilegiado con tranquilidad, independencia y cercanía a todos los servicios.
+        Ubicadas en calle La Sequía 24, Sant Joan d’Alacant, en la zona de La Font (El Campello), a tan solo 10 minutos de la playa de Muchavista y 15 minutos del centro de Alicante, estas villas ofrecen un entorno privilegiado con tranquilidad, independencia y cercanía a todos los servicios.
       </p>
       <p style={{marginTop:10}}>
         Vive el Mediterráneo más exclusivo en Quattro Islands, donde cada detalle está pensado para disfrutar de una experiencia residencial única.
@@ -317,10 +315,10 @@ export default function Page(){
                 <table className="spec">
                   <tbody>
                     <tr><th>Distribución</th><td>Salón–comedor con salida al jardín; cocina abierta (<em>opción cerrada</em> con corredera o vidrio); 3 dormitorios; 2 baños + aseo.</td></tr>
-                    <tr><th>Exterior</th><td>Terraza, jardín y <strong>piscina privada 3×5 m</strong>; toldo incluido u opción pérgola de madera.</td></tr>
-                    <tr><th>Fachada</th><td>Monocapa blanco; parte inferior en piedra y superior tono “café con leche” (opción porcelánico según presupuesto).</td></tr>
-                    <tr><th>Dormitorio</th><td>Plano con cama doble y <strong>armario empotrado grande</strong>.</td></tr>
-                    <tr><th>Parking</th><td>Dos plazas dentro de la parcela, junto a la piscina.</td></tr>
+                    <tr><th>Exterior</th><td>Terraza, jardín y piscina privada 3×5 m; toldo incluido u opción pérgola de madera.</td></tr>
+                    <tr><th>Fachada</th><td>Monocapa blanco; parte inferior en piedra y superior tono “café con leche”.</td></tr>
+                    <tr><th>Dormitorio</th><td>3 dormitorios, una con baño en suite.</td></tr>
+                    <tr><th>Parking</th><td>Dos plazas dentro de la parcela</td></tr>
                   </tbody>
                 </table>
                 <p className="muted" style={{fontSize:12}}>* Las viviendas están adaptadas para tus necesidades de hoy y mañana, tendrás las posibilidades de elegir diferentes personalizaciones de vivienda.</p>
@@ -427,7 +425,7 @@ export default function Page(){
             <div className="footer__col footer__contact">
               <div className="title">Contacto</div>
               <ul className="footer__list">
-                <li>La Font · El Campello (Alicante)</li>
+                <li>La Font · Sant Joan (Alicante)</li>
                 <li><a href="mailto:quattroislands@gmail.com">quattroislands@gmail.com</a></li>
                 <li><a href="tel:+34620407957">+34 620 40 79 57</a></li>
               </ul>
