@@ -399,3 +399,73 @@ h1,h2,h3,.h1,.h2,.h3{ font-family: var(--ff-head), Georgia, serif; letter-spacin
   .footer__top{ padding:44px 0; }
   .badge-logos img{ height: 56px; }   /* también grandes en móvil */
 }
+
+
+/* ===== About (imagen limpia) ===== */
+.about-image{ position:relative; }
+.about-frame{
+  position:relative;
+  border-radius: 20px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow: var(--shadow);
+  background:#fff;
+}
+.about-img{
+  display:block;
+  width:100%;
+  height: clamp(280px, 42vw, 480px);
+  object-fit: cover;
+}
+/* ===== Villa highlights (píldoras) ===== */
+.villa-highlights{
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  padding: 10px 14px;
+}
+.vh-item{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--bg-2);
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .02em;
+  color: #222;
+  white-space: nowrap;
+}
+.vh-item::before{
+  content:"";
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px rgba(142,138,102,.18);
+}
+.vh-sep{
+  width: 1px;
+  height: 20px;
+  background: rgba(0,0,0,.12);
+}
+
+/* Responsive: en móvil que no se corte y salte a dos líneas con buen respiro */
+@media (max-width: 640px){
+  .villa-highlights{
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    border-radius: 16px;
+    justify-content: center;
+  }
+  .vh-sep{ display:none; }
+  .vh-item{
+    padding: 8px 12px;
+    font-size: .92rem;
+  }
+}

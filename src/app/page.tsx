@@ -25,6 +25,7 @@ const VILLAS: Villa[] = [
 
 const GALLERY = [
   "/quattro/quattro-15.jpeg",
+  "/quattro/quattro-17.jpeg",
   "/quattro/quattro-14.jpeg",
   "/quattro/quattro-13.jpeg",
   "/quattro/quattro-12.jpeg",
@@ -36,6 +37,7 @@ const GALLERY = [
   "/quattro/quattro-02.jpeg",
   "/quattro/quattro-06.jpeg",
   "/quattro/quattro-04.jpeg",
+  "/quattro/quattro-16.jpeg",
   "/quattro/quattro-03.jpeg",
 ];
 
@@ -230,87 +232,56 @@ export default function Page(){
         </div>
       </section>
 
-                        {/* ===== QUIÉNES SOMOS — doble arco con tarjetas flotantes ===== */}
-      <section id="quienes" className="section bg-ivory">
+            {/* ===== QUIÉNES SOMOS (limpio, 1 imagen) ===== */}
+<section id="quienes" className="section bg-ivory">
+  <div className="container pad grid lg:grid-cols-2 gap-12 items-center">
+    {/* Texto */}
+    <div>
+      <div className="eyebrow">Quiénes somos</div>
+      <h2 className="h2">Quattro Islands</h2>
+      <div className="sep" />
+      <div className="lead" style={{marginTop:12}}>
+        Descubre Quattro Islands, un exclusivo conjunto de cuatro villas concebidas como islas privadas, donde la privacidad y la calma mediterránea se combinan con un diseño contemporáneo y elegante. Cada villa ha sido cuidadosamente diseñada para ofrecer espacios amplios, luminosos y conectados con el entorno, creando un equilibrio perfecto entre naturaleza, arquitectura y confort.
+      </div>
+      <p style={{marginTop:14}}>
+        Ubicadas en <strong>calle La Sequía 24, Sant Joan d’Alacant</strong>, en la zona de La Font (El Campello), a tan solo <strong>10 minutos</strong> de la playa de Muchavista y <strong>15 minutos</strong> del centro de Alicante, estas villas ofrecen un entorno privilegiado con tranquilidad, independencia y cercanía a todos los servicios.
+      </p>
+      <p style={{marginTop:10}}>
+        Vive el Mediterráneo más exclusivo en Quattro Islands, donde cada detalle está pensado para disfrutar de una experiencia residencial única.
+      </p>
+    </div>
 
-        {/* ARCO SUPERIOR (alineado a la izquierda) */}
-        <div className="container pad">
-          <div className="arch-wrap align-left">
-            <div className="arch-clip arch-top">
-              <Image
-                src="/quattro/quattro-03.jpeg"
-                alt="Interior — Quattro Islands"
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority={false}
-              />
-            </div>
-
-            {/* Tarjeta FLOTANTE (no se corta) */}
-            <div className="overlay-card overlay-card--float float-tl">
-              <div className="eyebrow">¿Por qué Quattro Islands?</div>
-              <h2 className="h2">Cuatro islas privadas en La Font</h2>
-              <div className="rule rule--short" />
-              <p className="lead">
-                <strong>Quattro Islands</strong> son cuatro villas concebidas como
-                <em> islas privadas</em>, exclusivas y singulares. Privacidad y calma mediterránea con
-                un diseño contemporáneo muy cuidado.
-              </p>
-              <p className="lead">
-                En <strong>La Font</strong> (El Campello), a <strong>10’</strong> de Muchavista y
-                <strong> 15’</strong> del centro de Alicante.
-              </p>
-              <div className="chips" style={{ marginTop: 10 }}>
-                {["Piscina 3×5 m", "2 plazas en parcela", "Fachada piedra + monocapa"].map((t) => (
-                  <span key={t} className="chip">{t}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ARCO INFERIOR (alineado a la derecha) */}
-        <div className="container pad">
-          <div className="arch-wrap align-right">
-            <div className="arch-clip arch-bottom">
-              <Image
-                src="/quattro/quattro-06.jpeg"   // cambia si quieres otra
-                alt="Exterior — Quattro Islands"
-                fill
-                sizes="100vw"
-                className="object-cover"
-                priority={false}
-              />
-            </div>
-
-            {/* Tarjeta FLOTANTE (no se corta) */}
-            <div className="overlay-card overlay-card--float float-br">
-              <div className="eyebrow">Constructora del proyecto</div>
-              <h3 className="h3">¿Quién construye tu casa?</h3>
-              <div className="rule rule--short" />
-              <p className="lead">
-                <strong>ZIMCO Proyectos y Diseños SL</strong>, empresa de Alicante especializada en
-                obra nueva, reformas integrales y diseño de interiores. Desde 2018, viviendas “llave en mano”
-                con calidad, detalle y atención personalizada.
-              </p>
-              <blockquote className="quote script">
-                Hogares mediterráneos, atemporales y pensados para vivir mejor.
-              </blockquote>
-            </div>
-          </div>
-        </div>
-      </section>
-
+    {/* Imagen única */}
+    <div className="about-image">
+      <div className="about-frame">
+        <img
+          src="/quattro/quattro-17.jpeg"    // cambia por la que prefieras
+          alt="Quattro Islands — arquitectura y entorno"
+          className="about-img"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+            
 
       {/* ===== VILLAS — MANTENEMOS TABS ===== */}
       <section id="villas" className="section bg-white">
         <div className="container pad">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <div className="eyebrow">Unidades</div>
-            <h2 className="h2">Las 4 villas</h2>
-            <p className="muted">Piscina privada 3×5 m y 2 plazas de aparcamiento en parcela.</p>
+          <div className="eyebrow">Unidades</div>
+          <h2 className="h2">Las 4 villas</h2>
+
+          {/* Highlights modernos */}
+          <div className="villa-highlights" role="list" aria-label="Características destacadas">
+            <span className="vh-item" role="listitem">Piscina privada</span>
+            <span className="vh-sep" aria-hidden="true" />
+            <span className="vh-item" role="listitem">2 plazas de aparcamiento</span>
+            <span className="vh-sep" aria-hidden="true" />
+            <span className="vh-item" role="listitem">Zonas comunes</span>
           </div>
+        </div>
+
 
           {/* Tabs */}
           <div className="tabs">
@@ -389,27 +360,32 @@ export default function Page(){
 
       {/* ===== UBICACIÓN ===== */}
       <section id="ubicacion" className="section bg-white">
-        <div className="container pad grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="eyebrow">Ubicación</div>
-            <h2 className="h2">La Font, El Campello</h2>
-            <p className="lead">Entorno exclusivo y tranquilo; a 10’ de Muchavista y 15’ del centro de Alicante.</p>
-            <div className="chips" style={{marginTop:10}}>
-              {["Colegios", "Centros comerciales", "Restaurantes", "Ocio y deporte", "Conexión autovía"].map(t=>(
-                <span key={t} className="chip">✓ {t}</span>
-              ))}
-            </div>
-          </div>
-          <div className="bg-white overflow-hidden rounded-2xl border border-[color:var(--line)] shadow">
-            <iframe
-              title="Mapa La Font"
-              className="w-full h-[340px]"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-0.461%2C38.374%2C-0.398%2C38.419&layer=mapnik&marker=38.397%2C-0.429"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
+  <div className="container pad grid lg:grid-cols-2 gap-10 items-center">
+    <div>
+      <div className="eyebrow">Ubicación</div>
+      <h2 className="h2">La Font — Carrer la Séquia 24</h2>
+      <p className="lead">Entorno exclusivo y tranquilo; a 10’ de Muchavista y 15’ del centro de Alicante.</p>
+      <div className="chips" style={{marginTop:10}}>
+        {["Colegios", "Centros comerciales", "Restaurantes", "Ocio y deporte", "Conexión autovía"].map(t=>(
+          <span key={t} className="chip">✓ {t}</span>
+        ))}
+      </div>
+      <p className="muted" style={{marginTop:10}}>
+        Dirección exacta: <strong>Carrer la Séquia 24, Sant Joan d’Alacant</strong>.
+      </p>
+    </div>
+
+    <div className="bg-white overflow-hidden rounded-2xl border border-[color:var(--line)] shadow">
+      <iframe
+        title="Mapa — Carrer la Séquia 24"
+        className="w-full h-[340px]"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Carrer%20la%20S%C3%A9quia%2024,%20Sant%20Joan%20d%E2%80%99Alacant&output=embed"
+      />
+    </div>
+  </div>
+</section>
 
       {/* ===== CONTACTO ===== */}
       <section id="contacto" className="section bg-ivory">
