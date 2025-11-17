@@ -318,7 +318,7 @@ export default function Page(){
                     <tr><th>Exterior</th><td>Terraza, jardín y piscina privada 3×5 m; toldo incluido u opción pérgola de madera.</td></tr>
                     <tr><th>Fachada</th><td>Monocapa blanco; parte inferior en piedra y superior tono “café con leche”.</td></tr>
                     <tr><th>Dormitorio</th><td>3 dormitorios, una con baño en suite.</td></tr>
-                    <tr><th>Parking</th><td>Dos plazas dentro de la parcela</td></tr>
+                    <tr><th>Parking</th><td>Dos plazas de garaje</td></tr>
                   </tbody>
                 </table>
                 <p className="muted" style={{fontSize:12}}>* Las viviendas están adaptadas para tus necesidades de hoy y mañana, tendrás las posibilidades de elegir diferentes personalizaciones de vivienda.</p>
