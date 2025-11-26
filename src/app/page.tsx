@@ -37,6 +37,11 @@ const GALLERY = [
   "/quattro/quattro-04.jpeg",
   "/quattro/quattro-16.jpeg",
   "/quattro/quattro-03.jpeg",
+  "/quattro/quattro-18.jpeg",
+  "/quattro/quattro-19.jpeg",
+  "/quattro/quattro-20.jpeg",
+  "/quattro/quattro-21.jpeg",
+  "/quattro/quattro-22.jpeg",
 ];
 
 
