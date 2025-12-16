@@ -253,7 +253,7 @@ export default function Page(){
         Vive el Mediterráneo más exclusivo en Quattro Islands, donde cada detalle está pensado para disfrutar de una experiencia residencial única.
       </p>
     </div>
-
+    
     {/* Imagen única */}
     <div className="about-image">
       <div className="about-frame">
@@ -265,8 +265,43 @@ export default function Page(){
       </div>
     </div>
   </div>
+</section>  
+{/* ===== DOSSIER (debajo de Quiénes somos) ===== */}
+<section className="section bg-ivory" aria-labelledby="dossier-title">
+  <div className="container pad">
+    <div className="doc-card">
+
+      {/* Texto + acciones */}
+      <div className="doc-body">
+        <div className="eyebrow">Documento</div>
+        <h3 id="dossier-title" className="h3">Dossier Quattro Islands</h3>
+        <p className="muted" style={{marginTop:6}}>
+          Toda la información del proyecto en un único documento: ubicación, concepto,
+          distribución y calidades.
+        </p>
+        <div className="doc-actions">
+          <a
+            href="/docs/quattro-islands-dossier.pdf"
+            className="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            Descargar PDF
+          </a>
+          <a
+            href="/docs/quattro-islands-dossier.pdf"
+            className="btn btn-outline"
+            target="_blank"
+            rel="noopener"
+          >
+            Ver online
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-            
+
 
       {/* ===== VILLAS — MANTENEMOS TABS ===== */}
       <section id="villas" className="section bg-white">
