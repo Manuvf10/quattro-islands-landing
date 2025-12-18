@@ -17,10 +17,10 @@ type VillaId = "A" | "B" | "C" | "D";
 type Villa = { id: VillaId; parcela?: number|null; util: number; construida: number; img: string };
 
 const VILLAS: Villa[] = [
-  { id: "A", parcela: 269.61, util: 123.90, construida: 143.41, img: "/quattro/quattro-12.jpeg" },
-  { id: "B", parcela: 260.33, util: 123.90, construida: 143.41, img: "/quattro/quattro-07.jpeg" },
-  { id: "C", parcela: 257.47, util: 121.56, construida: 141.14, img: "/quattro/quattro-11.jpeg" },
-  { id: "D", parcela: 263.88, util: 121.56, construida: 141.14, img: "/quattro/quattro-09.jpeg" },
+  { id: "A", parcela: 326.63, util: 123.90, construida: 143.41, img: "/quattro/quattro-12.jpeg" },
+  { id: "B", parcela: 317.47, util: 123.90, construida: 143.41, img: "/quattro/quattro-07.jpeg" },
+  { id: "C", parcela: 312.92, util: 121.56, construida: 141.14, img: "/quattro/quattro-11.jpeg" },
+  { id: "D", parcela: 319.64, util: 121.56, construida: 141.14, img: "/quattro/quattro-09.jpeg" },
 ];
 
 const GALLERY = [
